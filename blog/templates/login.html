@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block main_content %}
+
+    <div class="container text-center align-items-center">
+        <form method='POST' action="/login">
+
+            {{ form.csrf_token }}
+
+            {{ form.username.label }}
+            {{ form.username(class='form-control', placeholder='Kullanıcı Adı') }}
+            <br>
+
+            {{ form.password.label }}
+            {{ form.password(class='form-control' , placeholder='Parola') }}
+            <br>
+
+            {{ form.submit(class='form-submit') }}
+
+        </form>
+    </div>
+
+{% endblock %}

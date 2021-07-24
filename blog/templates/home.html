@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block stylesheet %}
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+
+{% endblock %}
+
+{% block title %} Home {% endblock %}
+
+{% block main_content %}
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <span>{{ message }}</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">X;</span>
+                </button>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+
+
+      <div class="container" id="post-nav">
+
+        <div class="row my-1 p-1">
+          <div class="col-3 p-2 mx-auto">
+            resim
+          </div>
+          <div class="col-9" p-2 mx-auto>
+            Post Hazırla
+          </div>
+        </div>
+
+        <div class="row my-1 p-1">
+          <div class="col-3 p-2 mx-auto">
+            resim-2
+          </div>
+          <div class="col-9 p-2 mx-auto">
+            Post Oku
+          </div>
+        </div>
+
+    </div>
+{% endblock %}

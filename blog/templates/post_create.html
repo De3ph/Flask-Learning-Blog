@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/post_create.css')}}">
+{% endblock %}
+
+{% block title %}
+  Post Oluştur
+{% endblock %}
+
+{% block main_content %}
+
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+      {% for message in messages %}
+          {{ message }}
+      {% endfor %}
+  {% endif %}
+  {% endwith %}
+
+  <form class="container"  method="post">
+    {{ form.csrf_token }}
+
+    {{ form.title.label }}
+    {{ form.title(class='form-control text-center' , placeholder='Başlık')}}
+    <br>
+
+    {{ form.content.label }}
+    {{ form.content(id='content_area' , class='form-control' , placeholder='İçerik')}}
+    <br>
+
+    {{ form.author.label }}
+    {{ form.author(class='form-control text-center' , value= current_user.username , readonly="readonly")}}
+    <br>
+
+    {{ form.submit(class="form-submit") }}
+
+  </form>
+
+{% endblock %}

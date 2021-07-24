@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/register.css') }}">
+{% endblock %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block main_content %}
+
+
+
+<div class="container">
+    <div class="card rounded-1">
+        <div class="card-header text-center ">Üyelik Formu</div>
+        <div class="card-body">
+            <div class="container text-center">
+    
+                <form method="POST">
+
+                    {{ form.csrf_token }}
+                    
+                    {{ form.username.label }}
+                    {{ form.username(class="form-control" , placeholder='Kullanıcı Adı') }}
+                    <br>
+            
+                    {{ form.email.label }}
+                    {{ form.email(class="form-control" , placeholder='Email') }}
+                    <br>
+            
+                    {{ form.password.label }}
+                    {{ form.password(class="form-control" , placeholder='Parola') }}
+                    <br>
+            
+                    {{ form.submit(class="form-submit") }}
+            
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

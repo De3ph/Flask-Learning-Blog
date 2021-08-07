@@ -10,40 +10,23 @@
 
 {% block main_content %}
 
-{% with messages = get_flashed_messages() %}
+{% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                <span>{{ message }}</span>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">X;</span>
-                </button>
+        {% for category, message in messages %}
+
+          {% if category=='logout_ok' %}
+          <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-around w-50">
+              <div><span>{{ message }}</span></div>
+              <button class="btn bg-transparent" onclick="delete_flash(this)">
+                <span aria-hidden="true">&#x2715;</span>
+              </button>
             </div>
+          </div>
+          {% endif %}
+          
         {% endfor %}
     {% endif %}
 {% endwith %}
 
-
-
-      <div class="container" id="post-nav">
-
-        <div class="row my-1 p-1">
-          <div class="col-3 p-2 mx-auto">
-            resim
-          </div>
-          <div class="col-9" p-2 mx-auto>
-            Post Hazırla
-          </div>
-        </div>
-
-        <div class="row my-1 p-1">
-          <div class="col-3 p-2 mx-auto">
-            resim-2
-          </div>
-          <div class="col-9 p-2 mx-auto">
-            Post Oku
-          </div>
-        </div>
-
-    </div>
 {% endblock %}

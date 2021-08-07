@@ -21,11 +21,11 @@ def register_page():
         db.session.add(new_member)
         db.session.commit()
 
-        flash(f'Başarıyla kayıt olundu. Aramıza hoşgeldin {new_member.username}.', category='success')
+        flash(f'Başarıyla kayıt olundu. Aramıza hoşgeldin {new_member.username}.', category='register_ok')
         return redirect(url_for('home_page'))
     if form.errors != {}:
         for message in form.errors.values():
-            flash(f'Kayıt olunurken hata oluştu: {message} !', category='danger')
+            flash(f'Kayıt olunurken hata oluştu: {message} !', category='register_no')
 
     return render_template('register.html',form=form)
 
@@ -40,17 +40,17 @@ def login_page():
 
         if deneme_kullanıcı.check_password(form.password.data):
             login_user(deneme_kullanıcı)
-            flash(message=f'Logged in successfuly! Welcome {deneme_kullanıcı.username}',category='success')
+            flash(message=f'Logged in successfuly! Welcome {deneme_kullanıcı.username}',category='login_ok')
             session["username"] = request.form["username"]
             return redirect(url_for('logged_page'))
         else:
-            flash(message='Somethings gone wrong!',category='danger')
+            flash(message='Somethings gone wrong!',category='login_bad')
     return render_template('login.html',form=form)
 
 @app.route('/logout')
 def logout():
     logout_user()
-    flash('Başarıyla çıkış yaptınız.')
+    flash('Başarıyla çıkış yaptınız.', category='logout_ok')
     return redirect(url_for('home_page'))
 
 '''
@@ -65,10 +65,10 @@ def post_create(username):
         new_post = Post(form.title.data, form.content.data, form.author.data)
         db.session.add(new_post)
         db.session.commit()
-        flash(message='Gönderi başarıyla oluşturuldu!')
+        flash(message='Gönderi başarıyla oluşturuldu!', category='post_ok')
     if form.errors != {}:
         for message in form.errors.values():
-            flash(f'Gönderi oluşturulurken hata oluştu :( : {message} !', category='danger')
+            flash(f'Gönderi oluşturulurken hata oluştu :( : {message} !', category='post_bad')
 
     return render_template('post_create.html', form=form)
 
@@ -82,7 +82,7 @@ def logged_page():
         msg = Message('Üyelik!', recipients=[form.email.data])
         msg.body='Mail üyeliğiniz tamamlandıııııı'
         mail.send(msg)
-        flash('Mail başarıyla gönderildi!!!')
+        flash('Mail başarıyla gönderildi!!!', category='mail_ok')
         return redirect(url_for('home_page'))
 
 

@@ -5,7 +5,7 @@
 
 
 #intro{
-  width: %100;
+  width: 100%;
 }
 
 #intro-box{
@@ -22,4 +22,11 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+}
+
+#asd{
+  border-radius: 48px;
+  background: linear-gradient(225deg, #00bde6, #00e1ff);
+  box-shadow:  -26px 26px 53px #00b9e0,
+               26px -26px 53px #00ebff;
 }

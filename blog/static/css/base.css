@@ -9,6 +9,10 @@ body{
   color: white;
 }
 
+#wave{
+  z-index: -200;
+  position: absolute;
+}
 
 #navbar::before{
   content: ' ';

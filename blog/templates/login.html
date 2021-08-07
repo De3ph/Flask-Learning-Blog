@@ -1,12 +1,17 @@
 {% extends 'base.html' %}
 
+{% block stylesheet %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css')}}">
+{% endblock %}
+
 {% block title %}
     Login
 {% endblock %}
 
+
 {% block main_content %}
 
-    <div class="container text-center align-items-center">
+    <div class="container text-center align-items-center" id="login_form">
         <form method='POST' action="/login">
 
             {{ form.csrf_token }}

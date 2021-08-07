@@ -1,11 +1,14 @@
 body{
-  background-image: url('../images/pexels-oliver-sjöström-1078983.jpg');
+  /* background-image: url('../images/pexels-oliver-sjöström-1078983.jpg'); */
+  /* background-color: #180606; */
+  background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%);
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  background-color: #3AAFA9;
+  color: white;
 }
+
 
 #navbar::before{
   content: ' ';
@@ -21,7 +24,7 @@ body{
 
 .nav-link a{
   font-size: 1.2rem;
-  color: #17252A;
+  color: white;
 }
 
 .nav-link a:hover{

@@ -1,9 +1,10 @@
 from flask import render_template, url_for, redirect, flash, session, request
 from flask_login import login_user, logout_user, login_required
-from blog import app, db
-from blog.forms import RegisterForm, LoginForm, PostCreateForm
+from blog import app, db, mail
+from blog.forms import RegisterForm, LoginForm, PostCreateForm, SubscribeForm
 from blog.models import Member, Post
 from flask_login.mixins import UserMixin
+from flask_mail import Message
 
 @app.route('/')
 def home_page():
@@ -41,7 +42,7 @@ def login_page():
             login_user(deneme_kullanıcı)
             flash(message=f'Logged in successfuly! Welcome {deneme_kullanıcı.username}',category='success')
             session["username"] = request.form["username"]
-            return redirect(url_for('home_page'))
+            return redirect(url_for('logged_page'))
         else:
             flash(message='Somethings gone wrong!',category='danger')
     return render_template('login.html',form=form)
@@ -70,3 +71,19 @@ def post_create(username):
             flash(f'Gönderi oluşturulurken hata oluştu :( : {message} !', category='danger')
 
     return render_template('post_create.html', form=form)
+
+
+@app.route('/logged', methods=['GET','POST'])
+@login_required
+def logged_page():
+    form = SubscribeForm()
+
+    if form.validate_on_submit():
+        msg = Message('Üyelik!', recipients=[form.email.data])
+        msg.body='Mail üyeliğiniz tamamlandıııııı'
+        mail.send(msg)
+        flash('Mail başarıyla gönderildi!!!')
+        return redirect(url_for('home_page'))
+
+
+    return render_template('logged.html', form = form)

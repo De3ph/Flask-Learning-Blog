@@ -20,3 +20,7 @@ class PostCreateForm(FlaskForm):
     content = TextAreaField(label='Yazı', validators=[DataRequired()])
     author = StringField(label='Yazar', validators=[Length(max=25), DataRequired()])
     submit = SubmitField(label='Submit',validators=[DataRequired()])
+
+class SubscribeForm(FlaskForm):
+    email = EmailField(label='Email', validators=[DataRequired()])
+    submit = SubmitField(label='Submit', validators=[DataRequired()])

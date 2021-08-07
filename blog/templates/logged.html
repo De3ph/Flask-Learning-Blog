@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ current_user.username }} {% endblock %}
+
+{% block main_content %}
+
+  <form method="post">
+    {{ form.csrf_token }}
+
+    {{ form.email.label(class='text-white')}}
+    {{ form.email(class='form-control' , placeholder='example@gmail.com')}}
+
+    <br>
+
+    {{ form.submit(class='btn bg-dark text-white')}}
+
+  </form>
+
+{% endblock %}

@@ -12,9 +12,9 @@ Register
 
 
 
-<div class="container">
-    <div class="card rounded-1" id="register_form">
-        <div class="card-header text-center ">Üyelik Formu</div>
+<div class="container rounded-1">
+    <div class="card " id="register_form">
+        <div class="mt-3 card-title text-center "><h5>Üyelik Formu</h5></div>
         <div class="card-body">
             <div class="container text-center">
 
@@ -23,18 +23,18 @@ Register
                     {{ form.csrf_token }}
 
                     {{ form.username.label }}
-                    {{ form.username(class="form-control" , placeholder='Kullanıcı Adı') }}
+                    {{ form.username(class="text-dark border-0 bg-transparent form-control" , placeholder='Kullanıcı Adı') }}
                     <br>
 
                     {{ form.email.label }}
-                    {{ form.email(class="form-control" , placeholder='Email') }}
+                    {{ form.email(class="text-dark border-0 bg-transparent form-control" , placeholder='Email') }}
                     <br>
 
                     {{ form.password.label }}
-                    {{ form.password(class="form-control" , placeholder='Parola') }}
+                    {{ form.password(class="text-dark border-0 bg-transparent form-control" , placeholder='Parola') }}
                     <br>
 
-                    {{ form.submit(class="btn bg-transparent") }}
+                    {{ form.submit(class="submit text-white btn bg-transparent") }}
 
                 </form>
 

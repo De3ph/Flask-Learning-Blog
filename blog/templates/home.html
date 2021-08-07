@@ -19,14 +19,25 @@
             <div class="d-flex justify-content-around w-50">
               <div><span>{{ message }}</span></div>
               <button class="btn bg-transparent" onclick="delete_flash(this)">
-                <span aria-hidden="true">&#x2715;</span>
+                <span class="text-white "aria-hidden="true">&#x2715;</span>
               </button>
             </div>
           </div>
           {% endif %}
-          
+
         {% endfor %}
     {% endif %}
 {% endwith %}
+
+
+<div class="intro">
+  <div class="intro-img">
+
+  </div>
+  <div class="intro-text">
+
+  </div>
+</div>
+
 
 {% endblock %}

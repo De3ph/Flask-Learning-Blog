@@ -1,21 +1,70 @@
 {% extends 'base.html' %}
 
+{% block stylesheet %}
+  <link rel="stylesheet" href="{{ url_for('static' , filename='css/logged.css')}}">
+{% endblock %}
+
 {% block title %} {{ current_user.username }} {% endblock %}
 
 {% block main_content %}
 
-  <div class="mx-auto"><p class="text-center">Gelişmelerden haberdar olmak için e-posta alın</p></div>
 
-  <form method="post">
-    {{ form.csrf_token }}
+<h3 class="my-5 py-1">Merhaba {{current_user.username}} :)</h3>
 
-    {{ form.email.label(class='text-white')}}
-    {{ form.email(class='form-control' , placeholder='example@gmail.com')}}
+<div class="container mx-auto">
 
-    <br>
+<div class="d-flex justify-content-evenly">
+  {% for i in range(0,post_num,2) %}
 
-    {{ form.submit(class='btn bg-transparent text-white')}}
+  {% if posts[i] %}
+  <div class="flex-row">
+    <div class="m-2 mx-auto p-1 flex-column">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="text-white card-title">{{ posts[i].title }}</h5>
+          <hr class="text-info">
+          <p class=" text-white card-text">{{ posts[i].content }}</p>
+        </div>
+      </div>
+    </div>
+  {% endif %}
 
-  </form>
+  {% if posts[i+1] %}
+    <div class="m-2 mx-auto p-1 flex-column">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="text-white card-title">{{ posts[i+1].title }}</h5>
+          <hr class="text-info">
+          <p class=" text-white card-text">{{ posts[i+1].content }}</p>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  </div>
+
+  {% endfor %}
+</div>
+
+
+<div class="mx-auto">
+  <p class="text-center">To keep update, receive mails from us</p>
+</div>
+
+<form method="post">
+
+
+  {{ form.csrf_token }}
+
+  {{ form.email.label(class='text-white')}}
+  {{ form.email(class='form-control' , placeholder='example@gmail.com')}}
+
+  <br>
+
+  {{ form.submit(class='submit btn bg-transparent text-white')}}
+
+</form>
+</div>
+
+
 
 {% endblock %}

@@ -42,7 +42,7 @@ def login_page():
             login_user(deneme_kullanıcı)
             flash(message=f'Logged in successfuly! Welcome {deneme_kullanıcı.username}',category='login_ok')
             session["username"] = request.form["username"]
-            return redirect(url_for('logged_page'))
+            return redirect(url_for('logged_page',username=session["username"]))
         else:
             flash(message='Somethings gone wrong!',category='login_bad')
     return render_template('login.html',form=form)
@@ -65,6 +65,8 @@ def post_create(username):
         new_post = Post(form.title.data, form.content.data, form.author.data)
         db.session.add(new_post)
         db.session.commit()
+        form.title.data="";
+        form.content.data="";
         flash(message='Gönderi başarıyla oluşturuldu!', category='post_ok')
     if form.errors != {}:
         for message in form.errors.values():
@@ -73,9 +75,15 @@ def post_create(username):
     return render_template('post_create.html', form=form)
 
 
-@app.route('/logged', methods=['GET','POST'])
+@app.route('/<username>/profile', methods=['GET','POST'])
 @login_required
-def logged_page():
+def logged_page(username):
+
+    posts = Post.query.filter_by(author=username)
+    posts = list(posts)
+
+    post_num = len(posts)
+
     form = SubscribeForm()
 
     if form.validate_on_submit():
@@ -86,4 +94,4 @@ def logged_page():
         return redirect(url_for('home_page'))
 
 
-    return render_template('logged.html', form = form)
+    return render_template('logged.html', form = form, posts = posts, post_num=post_num)

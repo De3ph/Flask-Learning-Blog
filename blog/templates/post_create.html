@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block main_content %}
-
+  <br>
   {% with messages = get_flashed_messages() %}
   {% if messages %}
       {% for message in messages %}
@@ -17,23 +17,24 @@
       {% endfor %}
   {% endif %}
   {% endwith %}
+  <br>
 
   <form class="container"  method="post">
     {{ form.csrf_token }}
 
     {{ form.title.label }}
-    {{ form.title(class='form-control text-center' , placeholder='Başlık')}}
+    {{ form.title(class='form-control text-center' , placeholder='Title')}}
     <br>
 
     {{ form.content.label }}
-    {{ form.content(id='content_area' , class='form-control' , placeholder='İçerik')}}
+    {{ form.content(id='content_area' , class='form-control' , placeholder='Content')}}
     <br>
 
     {{ form.author.label }}
     {{ form.author(class='form-control text-center' , value= current_user.username , readonly="readonly")}}
     <br>
 
-    {{ form.submit(class="form-submit") }}
+    {{ form.submit(class='submit text-white mb-1 btn bg-transparent form-submit') }}
 
   </form>
 

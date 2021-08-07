@@ -16,15 +16,15 @@
 
             {{ form.csrf_token }}
 
-            {{ form.username.label }}
-            {{ form.username(class='form-control', placeholder='Kullanıcı Adı') }}
+            {{ form.username.label(class='mt-2 pt-2') }}
+            {{ form.username(class='text-dark border-0 bg-transparent my-1 form-control', placeholder='Username') }}
             <br>
 
             {{ form.password.label }}
-            {{ form.password(class='form-control' , placeholder='Parola') }}
+            {{ form.password(class='text-dark border-0 bg-transparent my-1 form-control' , placeholder='Password') }}
             <br>
 
-            {{ form.submit(class='form-submit') }}
+            {{ form.submit(class='submit text-white mb-1 btn bg-transparent form-submit') }}
 
         </form>
     </div>

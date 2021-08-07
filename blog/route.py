@@ -21,11 +21,12 @@ def register_page():
         db.session.add(new_member)
         db.session.commit()
 
-        flash(f'Başarıyla kayıt olundu. Aramıza hoşgeldin {new_member.username}.', category='register_ok')
+        flash(f'Registered successfuly. Welcome dear {new_member.username}.', category='register_ok')
         return redirect(url_for('home_page'))
     if form.errors != {}:
         for message in form.errors.values():
-            flash(f'Kayıt olunurken hata oluştu: {message} !', category='register_no')
+            flash(f'Somethings gone wrong :(', category='register_no')
+            print(message)
 
     return render_template('register.html',form=form)
 
@@ -44,13 +45,14 @@ def login_page():
             session["username"] = request.form["username"]
             return redirect(url_for('logged_page',username=session["username"]))
         else:
-            flash(message='Somethings gone wrong!',category='login_bad')
+            flash('Somethings gone wrong!',category='login_bad')
+
     return render_template('login.html',form=form)
 
 @app.route('/logout')
 def logout():
     logout_user()
-    flash('Başarıyla çıkış yaptınız.', category='logout_ok')
+    flash('Logged out successfully!!', category='logout_ok')
     return redirect(url_for('home_page'))
 
 '''
@@ -67,10 +69,10 @@ def post_create(username):
         db.session.commit()
         form.title.data="";
         form.content.data="";
-        flash(message='Gönderi başarıyla oluşturuldu!', category='post_ok')
+        flash(message='Post created successfully!', category='post_ok')
     if form.errors != {}:
         for message in form.errors.values():
-            flash(f'Gönderi oluşturulurken hata oluştu :( : {message} !', category='post_bad')
+            flash(f'Somethings gone wrong :( : {message} !', category='post_bad')
 
     return render_template('post_create.html', form=form)
 
@@ -87,11 +89,10 @@ def logged_page(username):
     form = SubscribeForm()
 
     if form.validate_on_submit():
-        msg = Message('Üyelik!', recipients=[form.email.data])
-        msg.body='Mail üyeliğiniz tamamlandıııııı'
+        msg = Message('Subscription!', recipients=[form.email.data])
+        msg.body='Thanks for the mail subscription :)'
         mail.send(msg)
-        flash('Mail başarıyla gönderildi!!!', category='mail_ok')
+        flash('Mail sent successfully!!!', category='mail_ok')
         return redirect(url_for('home_page'))
-
 
     return render_template('logged.html', form = form, posts = posts, post_num=post_num)

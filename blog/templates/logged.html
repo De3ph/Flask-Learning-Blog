@@ -8,6 +8,25 @@
 
 {% block main_content %}
 
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+
+          {% if category=='mail_ok' %}
+          <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-around w-50">
+              <div><span>{{ message }}</span></div>
+              <button class="btn bg-transparent" onclick="delete_flash(this)">
+                <span class="text-white "aria-hidden="true">&#x2715;</span>
+              </button>
+            </div>
+          </div>
+          {% endif %}
+
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
 
 <h3 class="my-5 py-1">Hello dear {{current_user.username}} :)</h3>
 

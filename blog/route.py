@@ -25,7 +25,7 @@ def register_page():
         return redirect(url_for('home_page'))
     if form.errors != {}:
         for message in form.errors.values():
-            flash(f'Somethings gone wrong :(', category='register_no')
+            flash(message=f'Somethings gone wrong :(', category='register_no')
             print(message)
 
     return render_template('register.html',form=form)
@@ -45,14 +45,14 @@ def login_page():
             session["username"] = request.form["username"]
             return redirect(url_for('logged_page',username=session["username"]))
         else:
-            flash('Somethings gone wrong!',category='login_bad')
+            flash(message=f'Somethings gone wrong!',category='login_bad')
 
     return render_template('login.html',form=form)
 
 @app.route('/logout')
 def logout():
     logout_user()
-    flash('Logged out successfully!!', category='logout_ok')
+    flash(message=f'Logged out successfully!!', category='logout_ok')
     return redirect(url_for('home_page'))
 
 '''
@@ -72,7 +72,7 @@ def post_create(username):
         flash(message='Post created successfully!', category='post_ok')
     if form.errors != {}:
         for message in form.errors.values():
-            flash(f'Somethings gone wrong :( : {message} !', category='post_bad')
+            flash(message=f'Somethings gone wrong :( : {message} !', category='post_bad')
 
     return render_template('post_create.html', form=form)
 
@@ -92,7 +92,7 @@ def logged_page(username):
         msg = Message('Subscription!', recipients=[form.email.data])
         msg.body='Thanks for the mail subscription :)'
         mail.send(msg)
-        flash('Mail sent successfully!!!', category='mail_ok')
-        return redirect(url_for('home_page'))
+        flash(message=f'Mail sent successfully!!!', category='mail_ok')
+        return redirect(url_for('logged_page'))
 
     return render_template('logged.html', form = form, posts = posts, post_num=post_num)

@@ -1,8 +1,8 @@
 from flask import render_template, url_for, redirect, flash, session, request
 from flask_login import login_user, logout_user, login_required
 from blog import app, db, mail
-from blog.forms import RegisterForm, LoginForm, PostCreateForm, SubscribeForm
-from blog.models import Member, Post
+from blog.forms.forms import RegisterForm, LoginForm, PostCreateForm, SubscribeForm
+from blog.models.models import Member, Post
 from flask_login.mixins import UserMixin
 from flask_mail import Message
 
@@ -80,6 +80,7 @@ def post_create(username):
 
     return render_template('post_create.html', form=form)
 
+@app.route('/<username>/post')
 
 @app.route('/<username>/profile', methods=['GET','POST'])
 @login_required

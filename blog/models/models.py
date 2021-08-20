@@ -32,7 +32,7 @@ class Member(db.Model, UserMixin):
 
 class Post(db.Model):
     _id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(length=25), nullable=False)
+    title = db.Column(db.String(length=25), nullable=False, unique=True)
     content = db.Column(db.Text() , nullable=False)
     author = db.Column(db.String(length=25), nullable=False)
 

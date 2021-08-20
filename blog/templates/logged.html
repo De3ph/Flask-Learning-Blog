@@ -12,7 +12,7 @@
     {% if messages %}
         {% for category, message in messages %}
 
-          {% if category=='mail_ok' %}
+          {% if category=='mail_ok' or category=='deleted' or category=='post_ok' or category=='post_bad'%}
           <div class="d-flex justify-content-center">
             <div class="d-flex justify-content-around w-50">
               <div><span>{{ message }}</span></div>
@@ -33,35 +33,44 @@
 <div class="container mx-auto">
 
 <div class="d-flex justify-content-evenly">
-  {% for i in range(0,post_num,2) %}
+  {% if posts %} 
 
-  {% if posts[i] %}
-  <div class="flex-row">
-    <div class="m-2 mx-auto p-1 flex-column">
-      <div class="card text-center">
-        <div class="card-body">
-          <h5 class="text-white card-title">{{ posts[i].title }}</h5>
-          <hr class="text-info">
-          <p class=" text-white card-text">{{ posts[i].content }}</p>
+    {% for i in range(0,post_num,2) %}
+
+    {% if posts[i] %}
+    <div class="flex-row">
+      <div class="m-2 mx-auto p-1 flex-column">
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="text-white card-title">{{ posts[i].title }}</h5>
+            <hr class="text-info">
+            <p class=" text-white card-text">{{ posts[i].content }}</p>
+          </div>
+          <div class="text-white card-footer"><a class="text-white " href="{{ url_for('delete_post_page' , post_title=posts[i].title , username=current_user.username )}}">Sil</a></div>
         </div>
       </div>
-    </div>
-  {% endif %}
+    {% endif %}
 
-  {% if posts[i+1] %}
-    <div class="m-2 mx-auto p-1 flex-column">
-      <div class="card text-center">
-        <div class="card-body">
-          <h5 class="text-white card-title">{{ posts[i+1].title }}</h5>
-          <hr class="text-info">
-          <p class=" text-white card-text">{{ posts[i+1].content }}</p>
+    {% if posts[i+1] %}
+      <div class="m-2 mx-auto p-1 flex-column">
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="text-white card-title">{{ posts[i+1].title }}</h5>
+            <hr class="text-info">
+            <p class=" text-white card-text">{{ posts[i+1].content }}</p>
+          </div>
+          <div class="card-footer"><a class="text-white " href="{{ url_for('delete_post_page' , post_title=posts[i+1].title , username=current_user.username) }}">Sil</a></div>
         </div>
       </div>
+    {% endif %}
     </div>
-  {% endif %}
-  </div>
 
-  {% endfor %}
+    {% endfor %}
+
+  {% else %}
+  <p>Post Yok :(</p>
+  {% endif %}
+
 </div>
 
 <div class="container mail">

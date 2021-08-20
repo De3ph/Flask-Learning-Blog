@@ -74,13 +74,27 @@ def post_create(username):
         form.title.data="";
         form.content.data="";
         flash(message='Post created successfully!', category='post_ok')
+        return redirect(url_for('logged_page' , username=username))
     if form.errors != {}:
         for message in form.errors.values():
             flash(message=f'Somethings gone wrong :( : {message} !', category='post_bad')
 
     return render_template('post_create.html', form=form)
 
-@app.route('/<username>/post')
+@app.route('/<username>/post/<post_title>', methods=['GET','POST'])
+def delete_post_page(username, post_title):
+    
+    try:
+        
+        delete_post = Post.query.filter_by(title=post_title).first()
+        db.session.delete(delete_post)
+        db.session.commit()
+        flash('Writing deleted!',category='deleted')
+        return redirect(url_for('logged_page' , username=username))
+
+    except Exception as error:
+        raise error
+    
 
 @app.route('/<username>/profile', methods=['GET','POST'])
 @login_required

@@ -16,7 +16,7 @@
 
           {% if category=='logout_ok' %}
           <div class="d-flex justify-content-center">
-            <div class="d-flex justify-content-around w-50">
+            <div class="d-flex justify-content-center w-50">
               <div><span>{{ message }}</span></div>
               <button class="btn bg-transparent" onclick="delete_flash(this)">
                 <span class="text-white "aria-hidden="true">&#x2715;</span>
@@ -29,11 +29,12 @@
     {% endif %}
 {% endwith %}
 
-<div class='my-2 mx-auto'>
-  <h5> Don't wait too much to right time, Just write it!</h5>
+<div class='title mx-auto'>
+  <p>Just write it!</p>
 </div>
+<!-- 
 
-<div class="container my-2">
+<div class="clock container my-2">
 
 <div class="column">
   <div class="num">0</div>
@@ -94,6 +95,9 @@
   <div class="num">8</div>
   <div class="num">9</div>
 </div>
+ -->
+
+  <img src="{{ url_for('static' , filename='images/Welcome.png') }}" alt="">
 
 </div>
 <script src="{{ url_for('static' , filename='js/clock.js')}}"></script>

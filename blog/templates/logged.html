@@ -64,24 +64,28 @@
   {% endfor %}
 </div>
 
+<div class="container mail">
 
-<div class="mx-auto">
-  <p class="text-center">To keep update, receive mails from us</p>
+
+  <div class="mx-auto my-2">
+    <p class="text-center">To keep update, receive mails from us</p>
+  </div>
+
+  <form method="post">
+
+    {{ form.csrf_token }}
+
+    {{ form.email.label(class='my-1 text-white')}}
+    {{ form.email(class='my-2 form-control' , placeholder='example@gmail.com')}}
+
+    <br>
+
+    {{ form.submit(class='my-1 submit btn text-white')}}
+
+  </form>
+
 </div>
 
-<form method="post">
-
-
-  {{ form.csrf_token }}
-
-  {{ form.email.label(class='text-white')}}
-  {{ form.email(class='form-control' , placeholder='example@gmail.com')}}
-
-  <br>
-
-  {{ form.submit(class='submit btn bg-transparent text-white')}}
-
-</form>
 </div>
 
 

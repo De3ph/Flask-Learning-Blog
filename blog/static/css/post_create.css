@@ -1,3 +1,12 @@
+#title{
+   background-color: linen;
+}
+
 #content_area{
+   background-color: linen;
    height: 20vh;
 }
+
+#submit{
+   background-color: rgba(82, 98, 156, 0.33);
+ }

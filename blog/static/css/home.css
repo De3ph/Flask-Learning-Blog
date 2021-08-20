@@ -3,33 +3,7 @@
   padding: 0;
 }
 
-
-#intro{
-  width: 100%;
-}
-
-#intro-box{
-  width: 20%;
-  height: 20%;
-  background-color: #3AAFA9;
-  color: #FEFFFF;
-}
-
-#post-nav{
-  height: 100vh;
-  background-image: url('/blog/static/images/pexels-oliver-sjöström-1078983.jpg');
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-}
-
-#asd{
-  border-radius: 48px;
-  background: linear-gradient(225deg, #00bde6, #00e1ff);
-  box-shadow:  -26px 26px 53px #00b9e0,
-               26px -26px 53px #00ebff;
-}
+/*
 
 .column,
 .colon {
@@ -67,4 +41,23 @@
 }
 .num.distant {
   opacity: 0.1;
+}
+
+.clock{
+  overflow-y: hidden;
+}
+
+*/
+.title{
+  font-family: 'Cinzel', serif;
+  font-size: xx-large;
+  margin-top: 6rem;
+  margin-bottom: 1rem;
+  z-index: -5;
+}
+
+
+img{
+  max-width: 90vw;
+  max-height: 70vh;
 }

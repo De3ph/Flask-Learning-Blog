@@ -6,6 +6,10 @@ from blog.models import Member, Post
 from flask_login.mixins import UserMixin
 from flask_mail import Message
 
+@app.errorhandler(404)
+def error_404(error):
+    return render_template('/errors/404.html') , 404
+
 @app.route('/')
 def home_page():
     return render_template('home.html')

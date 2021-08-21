@@ -8,11 +8,11 @@ from flask_mail import Message
 
 @app.errorhandler(404)
 def error_404(error):
-    return render_template('/errors/404.html') , 404
+    return render_template('errors/404.html') , 404
 
 @app.route('/')
 def home_page():
-    return render_template('home.html')
+    return render_template('pages/home.html')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register_page():
@@ -32,7 +32,7 @@ def register_page():
             flash(message=f'Somethings gone wrong :(', category='register_no')
             print(message)
 
-    return render_template('register.html',form=form)
+    return render_template('pages/register.html',form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login_page():
@@ -51,7 +51,7 @@ def login_page():
         else:
             flash(message=f'Somethings gone wrong!',category='login_bad')
 
-    return render_template('login.html',form=form)
+    return render_template('pages/login.html',form=form)
 
 @app.route('/logout')
 def logout():
@@ -79,7 +79,7 @@ def post_create(username):
         for message in form.errors.values():
             flash(message=f'Somethings gone wrong :( : {message} !', category='post_bad')
 
-    return render_template('post_create.html', form=form)
+    return render_template('pages/post_create.html', form=form)
 
 @app.route('/<username>/post/<post_title>', methods=['GET','POST'])
 def delete_post_page(username, post_title):
@@ -114,4 +114,4 @@ def logged_page(username):
         flash(message=f'Mail sent successfully!!!', category='mail_ok')
         return redirect(url_for('logged_page'))
 
-    return render_template('logged.html', form = form, posts = posts, post_num=post_num)
+    return render_template('pages/logged.html', form = form, posts = posts, post_num=post_num)

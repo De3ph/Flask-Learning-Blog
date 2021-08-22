@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>:(</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static' , filename='css/404.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static' , filename='css/500.css')}}">
 </head>
 
 <body>
-    <h1 class="text-center my-3">Aradığın sayfa yok :/ </h1>
-    <img class='my-3' src="{{url_for('static' , filename='images/24.svg')}}" alt="">
-    <div id='button-div' class="w-25 mx-auto bg-dark text-center">
+    <h1 class="text-center mt-3">Bişiler ters gitti :( </h1>
+    <img src="{{url_for('static' , filename='images/500-internal-server-error-animate.svg')}}" alt="500">
+    <div class="w-25 mx-auto bg-dark text-center">
         <button class="w-100 btn btn-dark text-white"><a href="{{ url_for('home_page')}}">Ana Sayfa</a></button>
     </div>
 </body>

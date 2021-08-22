@@ -1,7 +1,12 @@
 h1{
-    height: 20vh;
+    height: 10vh;
+    margin-bottom: -5%
 }
 
+img{
+    width: 100vw;
+    height: 80vh;
+}
 
 a{
     text-decoration: none;

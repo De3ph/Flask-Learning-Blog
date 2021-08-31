@@ -15,7 +15,6 @@ def error_500(error):
     return render_template('errors/500.html') , 500
 
 
-
 @app.route('/')
 def home_page():
     return render_template('pages/home.html')
@@ -55,7 +54,7 @@ def login_page():
             session["username"] = request.form["username"]
             return redirect(url_for('logged_page',username=session["username"]))
         else:
-            flash(message=f'Somethings gone wrong!',category='login_bad')
+            flash(message=f'Incorrect password or username!',category='login_bad')
 
     return render_template('pages/login.html',form=form)
 

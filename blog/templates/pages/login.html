@@ -1,32 +1,51 @@
 {% extends 'pages/base.html' %}
 
 {% block stylesheet %}
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css')}}">
 {% endblock %}
 
 {% block title %}
-    Login
+Login
 {% endblock %}
 
 
 {% block main_content %}
 
-    <div class="container text-center align-items-center" id="login_form">
-        <form method='POST' action="/login">
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
 
-            {{ form.csrf_token }}
-
-            {{ form.username.label(class='mt-2 pt-2') }}
-            {{ form.username(class='text-dark border-0 bg-transparent my-1 form-control', placeholder='Username') }}
-            <br>
-
-            {{ form.password.label }}
-            {{ form.password(class='text-dark border-0 bg-transparent my-1 form-control' , placeholder='Password') }}
-            <br>
-
-            {{ form.submit(class='submit text-white mb-1 btn form-submit') }}
-
-        </form>
+{% if category=='login_bad'%}
+<div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-around w-50">
+        <div><span>{{ message }}</span></div>
+        <button class="btn bg-transparent" onclick="delete_flash(this)">
+            <span class="text-white " aria-hidden="true">&#x2715;</span>
+        </button>
     </div>
+</div>
+{% endif %}
+
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<div class="container text-center align-items-center" id="login_form">
+    <form method='POST' action="/login">
+
+        {{ form.csrf_token }}
+
+        {{ form.username.label(class='mt-2 pt-2') }}
+        {{ form.username(class='text-dark border-0 bg-transparent my-1 form-control', placeholder='Username') }}
+        <br>
+
+        {{ form.password.label }}
+        {{ form.password(class='text-dark border-0 bg-transparent my-1 form-control' , placeholder='Password') }}
+        <br>
+
+        {{ form.submit(class='submit text-white mb-1 btn form-submit') }}
+
+    </form>
+</div>
 
 {% endblock %}

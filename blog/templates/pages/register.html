@@ -23,7 +23,7 @@ Register
                 {% if messages %}
                 {% for category, message in messages %}
 
-                {% if category=='login_bad'%}
+                {% if category=='login_bad' or category=='register_no' %}
                 <div class="d-flex justify-content-center">
                     <div class="d-flex justify-content-around w-50">
                         <button class="btn bg-transparent" onclick="delete_flash(this)">
@@ -43,8 +43,7 @@ Register
                     {{ form.csrf_token }}
 
                     {{ form.username.label }}
-                    {{ form.username(class="text-dark border-0 bg-transparent form-control" , placeholder='Kullanıcı
-                    Adı') }}
+                    {{ form.username(class="text-dark border-0 bg-transparent form-control" , placeholder='Kullanıcı Adı') }}
                     <br>
 
                     {{ form.email.label }}

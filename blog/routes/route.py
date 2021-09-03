@@ -35,7 +35,6 @@ def register_page():
     if form.errors != {}:
         for message in form.errors.values():
             flash(message=f'Somethings gone wrong :(', category='register_no')
-            print(message)
 
     return render_template('pages/register.html',form=form)
 
@@ -98,7 +97,7 @@ def delete_post_page(username, post_title):
         delete_post = Post.query.filter_by(title=post_title).first()
         db.session.delete(delete_post)
         db.session.commit()
-        flash('Writing deleted!',category='deleted')
+        flash('Writing deleted!',category='post_deleted')
         return redirect(url_for('logged_page' , username=username))
 
     except Exception as error:

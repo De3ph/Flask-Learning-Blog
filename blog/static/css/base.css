@@ -14,17 +14,12 @@ body{
   position: absolute;
 }
 
-#navbar::before{
+#navbar::before , #navbar::after{
   content: ' ';
   display:block;
   height: 7px;
 }
 
-#navbar::after{
-  content: ' ';
-  display:block;
-  height: 7px;
-}
 
 .nav-link a{
   font-size: 1.2rem;
@@ -37,6 +32,10 @@ body{
 
 .nav-img{
   width: 10%;
+}
+
+.nav-link::after , .nav-link::before{
+  content: ' ';
 }
 
 /* #main-content{

@@ -34,7 +34,7 @@ def register_page():
         return redirect(url_for('home_page'))
     if form.errors != {}:
         for message in form.errors.values():
-            flash(message=f'Somethings gone wrong :(', category='register_no')
+            flash(message=f'{message[0]}', category='register_no')
 
     return render_template('pages/register.html',form=form)
 

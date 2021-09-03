@@ -48,14 +48,18 @@ def login_page():
 
         deneme_kullanıcı = Member.query.filter_by(username = form.username.data).first()
 
-        if deneme_kullanıcı.check_password(form.password.data):
-            login_user(deneme_kullanıcı)
-            flash(message=f'Logged in successfuly! Welcome {deneme_kullanıcı.username}',category='login_ok')
-            session["username"] = request.form["username"]
-            return redirect(url_for('logged_page',username=session["username"]))
-        else:
-            flash(message=f'Incorrect password or username!',category='login_bad')
+        try:
+            if deneme_kullanıcı.check_password(form.password.data):
+                login_user(deneme_kullanıcı)
+                flash(message=f'Logged in successfuly! Welcome {deneme_kullanıcı.username}',category='login_ok')
+                session["username"] = request.form["username"]
+                return redirect(url_for('logged_page',username=session["username"]))
 
+        except AttributeError:
+            flash(message=f"This member didn't exist!",category='login_bad')
+            return redirect(url_for('login_page'))
+
+        
     return render_template('pages/login.html',form=form)
 
 @app.route('/logout')

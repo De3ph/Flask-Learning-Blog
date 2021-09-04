@@ -23,7 +23,7 @@
             {% endif %}
             " onclick="delete_flash(this)">
                 <span class="text-white " aria-hidden="true">
-                    <div><span>{{ message }}</span></div>
+                    <div><span class="message">{{ message }}</span></div>
                 </span>
             </button>
         </div>
@@ -104,6 +104,7 @@
 
 </div>
 
+<script src="{{ url_for('static' , filename='js/logged.js') }}"></script>
 
 
 {% endblock %}

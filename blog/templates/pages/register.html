@@ -15,7 +15,7 @@ Register
 <div class="container rounded-1">
     <div class="card " id="register_form">
         <div class="mt-3 card-title text-center ">
-            <h5>Üyelik Formu</h5>
+            <h5>Register</h5>
         </div>
         <div class="card-body">
             <div class="container text-center">
@@ -28,7 +28,7 @@ Register
                     <div class="d-flex justify-content-around w-50">
                         <button class="btn bg-danger" onclick="delete_flash(this)">
                             <span class="text-white " aria-hidden="true">
-                                <div><span>{{ message }}</span></div>
+                                <div><span class="message">{{ message }}</span></div>
                             </span>
                         </button>
                     </div>
@@ -63,7 +63,7 @@ Register
         </div>
     </div>
 </div>
-
+<script src="{{ url_for('static' , filename='js/register.js') }}"></script>
 
 
 {% endblock %}

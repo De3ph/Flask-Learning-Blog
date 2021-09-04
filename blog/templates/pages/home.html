@@ -19,7 +19,7 @@
         <div class="d-flex justify-content-around w-50">
             <button class="btn bg-success" onclick="delete_flash(this)">
                 <span class="text-white " aria-hidden="true">
-                    <div><span>{{ message }}</span></div>
+                    <div><span class="message">{{ message }}</span></div>
                 </span>
             </button>
         </div>
@@ -33,73 +33,9 @@
 <div class='title mx-auto'>
   <p>Just write it!</p>
 </div>
-<!-- 
 
-<div class="clock container my-2">
-
-<div class="column">
-  <div class="num">0</div>
-  <div class="num">1</div>
-  <div class="num">2</div>
-</div>
-<div class="column">
-  <div class="num">0</div>
-  <div class="num">1</div>
-  <div class="num">2</div>
-  <div class="num">3</div>
-  <div class="num">4</div>
-  <div class="num">5</div>
-  <div class="num">6</div>
-  <div class="num">7</div>
-  <div class="num">8</div>
-  <div class="num">9</div>
-</div>
-<div class="colon"></div>
-<div class="column">
-  <div class="num">0</div>
-  <div class="num">1</div>
-  <div class="num">2</div>
-  <div class="num">3</div>
-  <div class="num">4</div>
-  <div class="num">5</div>
-</div>
-<div class="column">
-  <div class="num">0</div>
-  <div class="num">1</div>
-  <div class="num">2</div>
-  <div class="num">3</div>
-  <div class="num">4</div>
-  <div class="num">5</div>
-  <div class="num">6</div>
-  <div class="num">7</div>
-  <div class="num">8</div>
-  <div class="num">9</div>
-</div>
-<div class="colon"></div>
-<div class="column">
-  <div class="num">0</div>
-  <div class="num">1</div>
-  <div class="num">2</div>
-  <div class="num">3</div>
-  <div class="num">4</div>
-  <div class="num">5</div>
-</div>
-<div class="column">
-  <div class="num">0</div>
-  <div class="num">1</div>
-  <div class="num">2</div>
-  <div class="num">3</div>
-  <div class="num">4</div>
-  <div class="num">5</div>
-  <div class="num">6</div>
-  <div class="num">7</div>
-  <div class="num">8</div>
-  <div class="num">9</div>
-</div>
- -->
 
   <img src="{{ url_for('static' , filename='images/Welcome.png') }}" alt="">
-
+  <script src="{{ url_for('static' , filename='js/home.js') }}"></script>
 </div>
-<script src="{{ url_for('static' , filename='js/clock.js')}}"></script>
 {% endblock %}

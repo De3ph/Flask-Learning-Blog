@@ -19,7 +19,7 @@
         <div class="d-flex justify-content-around w-50">
             <button class="btn bg-danger" onclick="delete_flash(this)">
                 <span class="text-white " aria-hidden="true">
-                    <div><span>{{ message }}</span></div>
+                    <div><span class="message">{{ message }}</span></div>
                 </span>
             </button>
         </div>
@@ -49,5 +49,7 @@
     {{ form.submit(class='submit text-white mb-1 btn form-submit') }}
 
   </form>
+
+  <script src="{{ url_for('static' , filename='post_create.js') }}"></script>
 
 {% endblock %}

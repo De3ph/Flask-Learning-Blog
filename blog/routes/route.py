@@ -11,6 +11,10 @@ from flask_mail import Message
 def error_404(error):
     return render_template('errors/404.html'), 404
 
+@app.errorhandler(401)
+def error_401(error):
+    return render_template('errors/401.html'), 401
+
 
 @app.errorhandler(500)
 def error_500(error):

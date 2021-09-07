@@ -22,10 +22,8 @@ Login
     {% if category=='login_bad'%}
     <div class="d-flex justify-content-center">
         <div class="d-flex justify-content-around w-50">
-            <button class="btn bg-danger" onclick="delete_flash(this)">
-                <span class="text-white " aria-hidden="true">
-                    <div><span class="message">{{ message }}</span></div>
-                </span>
+            <button class="message w-100 text-white btn bg-danger" onclick="delete_flash(this)">
+                {{ message }}
             </button>
         </div>
     </div>
@@ -34,7 +32,7 @@ Login
     {% endfor %}
     {% endif %}
     {% endwith %}
-    
+
     <form method='POST' action="/login">
 
         {{ form.csrf_token }}

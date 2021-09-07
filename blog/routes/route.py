@@ -5,7 +5,7 @@ from blog.forms.forms import RegisterForm, LoginForm, PostCreateForm, SubscribeF
 from blog.models.models import Member, Post
 from flask_login.mixins import UserMixin
 from flask_mail import Message
-
+from sqlalchemy.exc import IntegrityError
 
 @app.errorhandler(404)
 def error_404(error):
@@ -33,17 +33,18 @@ def register_page():
 
     if form.validate_on_submit():
 
-        new_member = Member(form.username.data,
-                            form.email.data, form.password.data)
-        db.session.add(new_member)
-        db.session.commit()
-
-        flash(
+        try:
+            new_member = Member(form.username.data,
+                                form.email.data, form.password.data)
+            db.session.add(new_member)
+            db.session.commit()
+            flash(
             f'Registered successfuly. Welcome dear {new_member.username}.', category='register_ok')
-        return redirect(url_for('home_page'))
-    if form.errors != {}:
-        for message in form.errors.values():
-            flash(message=f'{message[0]}', category='register_no')
+            return redirect(url_for('home_page'))
+
+        except IntegrityError:
+            flash(message='Username/email is already used' , category='register_no')
+            return redirect(url_for('register_page'))
 
     return render_template('pages/register.html', form=form)
 

@@ -1,9 +1,3 @@
-let loading_screen = document.querySelector('.loader');
-
-window.addEventListener('load' , function(){
-    loading_screen.style.display = 'none';
-});
-
 const message_content = document.querySelector('.message').innerHTML;
 
 const message = document.querySelector('.message');

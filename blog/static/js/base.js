@@ -1,3 +1,10 @@
+let loading_screen = document.querySelector('.loader');
+
+window.addEventListener('load' , function(){
+    loading_screen.style.display = 'none';
+});
+
+
 let btn = document.querySelector('.darkMode')
 
 let currentTheme = localStorage.getItem("theme")

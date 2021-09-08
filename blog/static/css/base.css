@@ -5,7 +5,10 @@ body{
   background-attachment: fixed;
   background-size: cover;
   color: white;
-  overflow: hidden;
+}
+
+:root {
+  color-scheme: light dark; /* both supported */
 }
 
 #wave{

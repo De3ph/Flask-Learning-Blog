@@ -73,10 +73,9 @@
 
     <br>
 
-    <footer>
-
+    <footer class="container text-center">
+        <button click="turn()" class="darkMode btn bg-dark text-info rounded-circle">Filter</button>
     </footer>
-
 
     <script src="{{ url_for('static' , filename='js/bootstrap.bundle.js') }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -85,6 +84,7 @@
             $(flash).parent().remove()
         }
     </script>
-    </body>
+    <script src="{{ url_for('static' , filename='js/base.js')}}"></script>    
+</body>
 
 </html>

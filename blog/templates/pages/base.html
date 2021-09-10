@@ -22,7 +22,7 @@
     <title>{% block title %} {% endblock %}</title>
     </head>
 
-    <body>
+    <body class="bg-black">
 
         <div class="loader">
             <div class="spinner spinner-border text-info" role="status">
@@ -84,7 +84,7 @@
     <br>
 
     <footer class="container text-center">
-        <button onclick="turnBlack()" class="darkMode btn bg-dark text-info rounded-circle">Filter</button>
+        <button class="darkMode btn bg-dark text-info rounded-circle">Dark Theme</button>
     </footer>
 
     <script src="{{ url_for('static' , filename='js/bootstrap.bundle.js') }}"></script>

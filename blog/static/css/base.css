@@ -7,6 +7,10 @@ body{
   color: white;
 }
 
+.none-background{
+  background: none;
+}
+
 :root {
   color-scheme: light dark; /* both supported */
 }

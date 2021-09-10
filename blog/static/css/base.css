@@ -44,6 +44,6 @@ body{
   content: ' ';
 }
 
-/* #main-content{
-  background-color: #DEF2F1;
-} */
+.darkMode::after , .darkMode::before {
+  content: '';
+}

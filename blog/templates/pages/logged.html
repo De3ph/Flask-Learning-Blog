@@ -64,8 +64,11 @@
             <hr class="text-info">
             <p class=" text-white card-text">{{ posts[i+1].content }}</p>
           </div>
-          <div class="card-footer"><a class="text-white " href="{{ url_for('delete_post_page' , post_title=posts[i+1].title , username=current_user.username) }}">Sil</a></div>
-        </div>
+          <div class="card-footer">
+            <a class="text-white " href="{{ url_for('delete_post_page' , post_title=posts[i+1].title , username=current_user.username) }}">Sil</a>
+            <a class="text-white" href="{{ url_for('change_note' , post_title=posts[i+1].title , username=current_user.username) }}">Değiştir</a>
+          </div>
+          </div>
       </div>
     {% endif %}
     </div>

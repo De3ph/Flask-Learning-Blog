@@ -1,0 +1,40 @@
+{% extends 'pages/base.html' %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static' , filename='css/logged.css')}}">
+{% endblock %}
+
+{% block title %} {{ current_user.username }} {% endblock %}
+
+{% block main_content %}
+
+<form class="container" method="post">
+    {{ variables['form'].csrf_token }}
+
+    {{ variables['form'].title.label }}
+    {{ variables['form'].title(class='form-control text-center' , value=variables['title'])}}
+    <br>
+
+    {{ variables['form'].content.label }}
+    {{ variables['form'].content(id='content_area' , class='form-control' )}}
+    <br>
+
+    {{ variables['form'].author.label }}
+    {{ variables['form'].author(class='form-control text-center' , value= current_user.username , readonly="readonly")}}
+    <br>
+
+    {{ variables['form'].submit(class='submit text-white mb-1 btn form-submit') }}
+
+</form>
+
+<script>
+    // aşşağıdaki hata önemli değil, python verisini başarıyla değer olarak atıyor
+    let content = {{ variables['content'] }};
+    let textArea = document.getElementsByTagName('textarea');
+
+    textArea.content_area.value = content;
+
+    
+</script>
+
+{% endblock %}

@@ -12,7 +12,7 @@
     {% if messages %}
     {% for category, message in messages %}
 
-    {% if category=='login_ok' or category=='post_ok' or category=='mail_ok' or category=='post_deleted' or category=='post_bad' %}
+    {% if category=='login_ok' or category=='post_ok' or category=='mail_ok' or category=='post_deleted' or category=='post_changed' or category=='post_bad' %}
     <div class="d-flex justify-content-center">
         <div class="d-flex justify-content-around w-50">
             <button class="btn message w-100 text-white 
@@ -51,7 +51,14 @@
             <hr class="text-info">
             <p class=" text-white card-text">{{ posts[i].content }}</p>
           </div>
-          <div class="text-white card-footer"><a class="text-white " href="{{ url_for('delete_post_page' , post_title=posts[i].title , username=current_user.username )}}">Sil</a></div>
+          <div class="text-white card-footer">
+            <div>
+              <a class="text-white " href="{{ url_for('delete_post_page' , post_title=posts[i].title , username=current_user.username )}}">Sil</a>
+            </div>
+            <div>
+              <a class="text-white" href="{{ url_for('change_post_page' , username=current_user.username , _post_id=posts[i].get_id())}}">Düzenle</a>
+            </div>
+          </div>
         </div>
       </div>
     {% endif %}

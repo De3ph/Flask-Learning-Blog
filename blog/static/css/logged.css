@@ -19,3 +19,13 @@
 .mail{
     margin-top: 4rem;
 }
+
+a{
+    text-decoration: none;
+}
+a:visited{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}

@@ -1,3 +1,4 @@
+from os import error
 from flask import render_template, url_for, redirect, flash, session, request
 from flask_login import login_user, logout_user, login_required
 from blog import app, db, mail
@@ -109,11 +110,9 @@ def post_create(username):
     return render_template('pages/post_create.html', form=form)
 
 
-@app.route('/<username>/post/<post_title>', methods=['GET', 'POST'])
+@app.route('/<username>/post/delete <post_title>', methods=['GET', 'POST'])
 def delete_post_page(username, post_title):
-
     try:
-
         delete_post = Post.query.filter_by(title=post_title).first()
         db.session.delete(delete_post)
         db.session.commit()
@@ -123,6 +122,35 @@ def delete_post_page(username, post_title):
     except Exception as error:
         raise error
 
+
+@app.route('/<username>/post/change <_post_id>' , methods=['GET', 'POST'])
+def change_post_page(username , _post_id):
+    variables={}
+    
+    form = PostCreateForm()
+    variables['form'] = form
+
+    selected_post = Post.query.get(_post_id)
+    
+    variables['title'] = selected_post.title
+    variables['content'] = selected_post.content
+
+    if form.validate_on_submit():
+        try:
+            selected_post.title = form.title.data
+            selected_post.content = form.content.data
+            selected_post.author = username
+            
+            db.session.add(selected_post)
+            db.session.commit()
+            flash('Writing changed!', category='post_changed')
+
+            return(redirect(url_for('logged_page' , username=username)))
+        
+        except Exception as error:
+            raise error
+
+    return render_template('pages/post_change.html' , variables=variables)
 
 @app.route('/<username>/profile', methods=['GET', 'POST'])
 @login_required

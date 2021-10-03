@@ -38,36 +38,42 @@
     <nav class=" d-block navbar navbar-expand" id='navbar'>
         <div class="d-block container w-100">
             <div class="row">
-                <div class="d-flex justify-content-center nav-link col-md">
-                    <img class='nav-img' src="{{ url_for('static', filename='images/house.svg')}}" alt="home">
-                    <a class="nav-link d-block text-center" href="{{ url_for('home_page') }}">Home</a>
-                </div>
+                
 
                 {% if current_user.is_authenticated %}
                 <div class="d-flex justify-content-center nav-link col-md">
-                    <img class='nav-img' src="{{ url_for('static', filename='images/user.svg')}}" alt="home">
+                    <img class='nav-img' src="{{ url_for('static', filename='images/opinions.svg')}}" alt="opinions_svg">
+                    <a class="nav-link d-block text-center" href="{{ url_for('social_page') }}">Sosyal</a>
+                </div>
+
+                <div class="d-flex justify-content-center nav-link col-md">
+                    <img class='nav-img' src="{{ url_for('static', filename='images/user.svg')}}" alt="logged_svg">
 
                     <a class="nav-link d-block text-center"
                         href="{{ url_for('logged_page' , username= current_user.username) }}">{{ current_user.username
                         }}</a>
                 </div>
                 <div class="d-flex justify-content-center nav-link col-md">
-                    <img class='nav-img' src="{{ url_for('static', filename='images/logout.svg')}}" alt="home">
+                    <img class='nav-img' src="{{ url_for('static', filename='images/logout.svg')}}" alt="logout_svg">
                     <a class="nav-link d-block text-center" href="{{ url_for('logout') }}">Logout</a>
                 </div>
                 <div class="d-flex justify-content-center nav-link col-md">
-                    <img class='nav-img' src="{{ url_for('static', filename='images/blog.svg')}}" alt="home">
+                    <img class='nav-img' src="{{ url_for('static', filename='images/blog.svg')}}" alt="write_svg">
                     <a class="nav-link d-block text-center"
                         href="{{ url_for('post_create' , username= current_user.username) }}">Write</a>
                 </div>
 
                 {% else %}
                 <div class="d-flex justify-content-center nav-link col-md">
-                    <img class='nav-img' src="{{ url_for('static', filename='images/register.svg')}}" alt="home">
+                    <img class='nav-img' src="{{ url_for('static', filename='images/house.svg')}}" alt="home_svg">
+                    <a class="nav-link d-block text-center" href="{{ url_for('home_page') }}">Home</a>
+                </div>
+                <div class="d-flex justify-content-center nav-link col-md">
+                    <img class='nav-img' src="{{ url_for('static', filename='images/register.svg')}}" alt="register_svg">
                     <a class="nav-link d-block text-center" href="{{ url_for('register_page') }}">Register</a>
                 </div>
                 <div class="d-flex justify-content-center nav-link col-md">
-                    <img class='nav-img' src="{{ url_for('static', filename='images/key.svg')}}" alt="home">
+                    <img class='nav-img' src="{{ url_for('static', filename='images/key.svg')}}" alt="login_svg">
                     <a class="nav-link d-block text-center" href="{{ url_for('login_page') }}">Login</a>
                 </div>
                 {% endif %}

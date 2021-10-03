@@ -171,3 +171,9 @@ def logged_page(username):
         return redirect(url_for('logged_page'))
 
     return render_template('pages/logged.html', form=form, posts=posts, post_num=post_num)
+
+@app.route('/social' , methods=['GET'])
+@login_required
+def social_page():
+    
+    return render_template('pages/show_posts.html')

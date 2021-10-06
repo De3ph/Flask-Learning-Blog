@@ -44,6 +44,11 @@ body{
   content: ' ';
 }
 
+.darkMode{
+  width: 10%;
+  height: 10%;
+}
+
 .darkMode::after , .darkMode::before {
   content: '';
 }

@@ -176,4 +176,4 @@ def logged_page(username):
 @login_required
 def social_page():
     
-    return render_template('pages/show_posts.html')
+    return render_template('pages/social.html')
